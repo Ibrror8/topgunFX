@@ -1,5 +1,7 @@
 package sample;
 
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,9 +28,9 @@ public class LoginController implements Initializable {
     @FXML
     private Label isConnected;
     @FXML
-    private TextField nameInput;
+    private JFXTextField nameInput;
     @FXML
-    private TextField passInput;
+    private JFXPasswordField passInput;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

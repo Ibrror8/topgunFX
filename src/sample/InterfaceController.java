@@ -37,7 +37,7 @@ public class InterfaceController implements Initializable {
             NumberFormat format = NumberFormat.getCurrencyInstance(Locale.GERMANY);
             String currency = format.format(value);
             System.out.println("Currency in Germany: " + currency);
-            
+
             moneyLabel.setText(currency);
             //moneyLabel.setText(value);
         } catch (SQLException e) {

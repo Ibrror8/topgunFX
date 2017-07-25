@@ -1,33 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox  fx:controller="sample.LoginController" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="10.0" style="-fx-background-color: #efefef;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginController">
    <children>
-      <Label text="Welcome to TopGun">
-         <font>
-            <Font name="Impact" size="26.0" />
-         </font>
-         <VBox.margin>
-            <Insets bottom="30.0" />
-         </VBox.margin>
-      </Label>
-      <TextField fx:id="nameInput" promptText="Username.." />
-      <PasswordField fx:id="passInput" promptText="Password.."  onAction="#loginAction"/>
-      <Button mnemonicParsing="false"  text="Login" onAction="#loginAction">
-         <VBox.margin>
-            <Insets top="75.0" />
-         </VBox.margin>
-      </Button>
-      <Label fx:id="isConnected" text="Invalid username or password. Try again." textFill="RED" visible="true">
+      <HBox alignment="TOP_CENTER" opacity="0.92" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label styleClass="header" text=" Top" textFill="#ff3b3f">
+               <font>
+                  <Font name="System Bold" size="63.0" />
+               </font>
+            </Label>
+            <Label styleClass="header" text="Gun" textFill="DARKGRAY">
+               <font>
+                  <Font name="System Bold" size="63.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <JFXTextField fx:id="nameInput" focusColor="#ff3b3f" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="29.0" prefWidth="353.0" promptText="Username.." style="-fx-pref-width: 300; -fx-pref-height: 50;" unFocusColor="BLACK" />
+      <JFXPasswordField fx:id="passInput" focusColor="#ff3b3f" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#loginAction" promptText="Password..." style="-fx-pref-width: 300; -fx-pref-height: 50;" unFocusColor="BLACK" />
+      <JFXButton buttonType="RAISED" onAction="#loginAction" prefHeight="71.0" prefWidth="183.0" ripplerFill="WHITE" style="-fx-background-color: #ff3b3f;" text="Log in" textFill="WHITE">
          <VBox.margin>
             <Insets top="30.0" />
+         </VBox.margin>
+         <font>
+            <Font name="System Bold" size="29.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="isConnected" text="Invalid username or password. Try again." textFill="#de1b1b" visible="true">
+         <VBox.margin>
+            <Insets top="20.0" />
          </VBox.margin>
       </Label>
    </children>
