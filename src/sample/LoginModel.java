@@ -53,10 +53,11 @@ public class LoginModel {
         }
     }
 
-    public int getId(String name) throws SQLException {
+    public String getUserData(String name, String column) throws SQLException {
+
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        String sql = "select id from users where name = ?;";
+        String sql = "select " + column + " from users where name = ?;";
 
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -65,13 +66,14 @@ public class LoginModel {
             resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                return resultSet.getInt("id");
+                String wantedData = Integer.toString(resultSet.getInt("id"));
+                return wantedData;
             } else {
-                return 0;
+                return "";
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            return 0;
+            return "";
         } finally {
             preparedStatement.close();
             resultSet.close();
@@ -85,7 +87,9 @@ public class LoginModel {
 
         try {
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, getId(name));
+
+            int userid = Integer.parseInt(getUserData(name, "id"));
+            preparedStatement.setInt(1, userid);
             preparedStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
