@@ -78,15 +78,7 @@ public class LoginModel {
             String wantedData = "";
 
             if (resultSet.next()) {
-                //convert int to string if id searched
-                if(column == "id") {
-                    wantedData = Integer.toString(resultSet.getInt(column));
-                } // convert double to strinf if money searched
-                else if (column == "money") {
-                    wantedData = Double.toString(resultSet.getDouble(column));
-                } else {
-                    wantedData = resultSet.getString(column);
-                }
+                wantedData = resultSet.getString(column);
 
                 //returns wanted data
                 return wantedData;
