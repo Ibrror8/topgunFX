@@ -27,7 +27,7 @@ public class LoginModel {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         String query = "select * from users where name = ? and password = ?;";
-        String query2 = "insert into activity_log(userid, activity) values (?, 'login')";
+        String query2 = "insert into activity_log(userid, activity) values (?, 'login');";
 
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -39,7 +39,7 @@ public class LoginModel {
                 preparedStatement = connection.prepareStatement(query2);
                 preparedStatement.setInt(1, resultSet.getInt("id"));
 
-                preparedStatement.executeQuery();
+                preparedStatement.execute();
                 return true;
             } else {
                 return false;
