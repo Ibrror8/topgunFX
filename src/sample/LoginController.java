@@ -19,8 +19,10 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
+    //get instance of Login model -> for calling non-static methods from static
     public LoginModel loginModel = new LoginModel();
 
+    //our FMXL controles
     @FXML
     private Label isConnected;
     @FXML
@@ -30,6 +32,7 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //display if database connection is there
         if(loginModel.isDBConnected()) {
             isConnected.setText("is connected");
         } else {
@@ -37,8 +40,10 @@ public class LoginController implements Initializable {
         }
     }
 
+    //when user presses enter or clicks button -> tries to login
     public void loginAction(ActionEvent event) {
         try {
+            //see if there is an user with that password
             if(loginModel.isLogin(nameInput.getText(), passInput.getText())) {
                 isConnected.setText("Username and password is correct");
 
@@ -47,6 +52,8 @@ public class LoginController implements Initializable {
 
                 //get new window
                 Stage primaryStage = new Stage();
+
+                //on close -> send database informations who has logged out
                 primaryStage.setOnCloseRequest(e -> {
                     try {
                         loginModel.logoutActivity(nameInput.getText());
@@ -56,10 +63,11 @@ public class LoginController implements Initializable {
                     }
                 });
 
+                //load fmxl of new window
                 FXMLLoader loader = new FXMLLoader();
                 Pane root = loader.load(getClass().getResource("Interface.fxml").openStream());
 
-                //pur username on new window
+                //put username on new window
                 InterfaceController interfaceController = (InterfaceController)loader.getController();
                 interfaceController.getUser(nameInput.getText());
 

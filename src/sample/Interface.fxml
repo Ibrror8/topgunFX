@@ -104,8 +104,8 @@
                   </Button>
                   <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Label fx:id="money" text="Your money" />
-                        <Label fx:id="day" text="12.08.17 " />
+                        <Label fx:id="userLabel" text="Your name" />
+                        <Label fx:id="moneyLabel" text="Your money " />
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" />
