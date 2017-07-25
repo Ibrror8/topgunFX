@@ -53,7 +53,46 @@ public class LoginModel {
         }
     }
 
+    public int getId(String name) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "select id from users where name = ?;";
 
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, name);
+
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getInt("id");
+            } else {
+                return 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        } finally {
+            preparedStatement.close();
+            resultSet.close();
+
+        }
+    }
+
+    public void logoutActivity(String name) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        String sql = "insert into activity_log(userid, activity) values (?, 'logout');";
+
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, getId(name));
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            preparedStatement.close();
+        }
+    }
 
 
 

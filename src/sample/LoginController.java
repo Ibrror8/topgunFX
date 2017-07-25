@@ -47,6 +47,14 @@ public class LoginController implements Initializable {
 
                 //get new window
                 Stage primaryStage = new Stage();
+                primaryStage.setOnCloseRequest(e -> {
+                    try {
+                        loginModel.logoutActivity(nameInput.getText());
+                    } catch (SQLException e1) {
+                        System.out.println("Database failed");
+                        e1.printStackTrace();
+                    }
+                });
 
                 FXMLLoader loader = new FXMLLoader();
                 Pane root = loader.load(getClass().getResource("Interface.fxml").openStream());
